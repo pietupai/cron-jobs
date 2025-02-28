@@ -14,6 +14,7 @@ jobs:
 
       - name: Lähetä GET-pyyntö ja tallenna vastaus
         run: |
+          echo "$(date) - GET-pyyntö käynnistyy"
           response=$(curl -s https://webhook-x19y.onrender.com/api/poll)
           echo "Palvelimen vastaus: $response"
           http_code=$(curl -o /dev/null -s -w "%{http_code}" https://webhook-x19y.onrender.com/api/poll)
@@ -23,4 +24,4 @@ jobs:
           fi
 
       - name: Tehtävä valmis
-        run: echo "Ajastettu GET-pyyntö suoritettu."
+        run: echo "$(date) - Ajastettu GET-pyyntö suoritettu."
