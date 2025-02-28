@@ -4,6 +4,7 @@ on:
   schedule:
     # Suoritetaan joka 5. minuutti
     - cron: "*/5 * * * *"
+  workflow_dispatch: # Mahdollistaa manuaalisen käynnistyksen
 
 jobs:
   get-request:
