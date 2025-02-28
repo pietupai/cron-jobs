@@ -1,0 +1,24 @@
+name: Scheduled GET Request
+
+on:
+  schedule:
+    # Suoritetaan joka 10. minuutti
+    - cron: "*/10 * * * *"
+
+jobs:
+  get-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Aloitetaan tehtävä
+        run: echo "Ajastettu GET-pyyntö käynnistyy osoitteeseen https://webhook-x19y.onrender.com/api/poll"
+
+      - name: Lähetä GET-pyyntö ja tallenna vastaus
+        run: |
+          response=$(curl -X GET -w "%{http_code}" -s -o /dev/null https://webhook-x19y.onrender.com/api/poll)
+          echo "Palvelimen HTTP-vastauskoodi: $response"
+          if [ "$response" -ne 200 ]; then
+            echo "Varoitus: HTTP-vastauskoodi ei ole 200. Tarkista palvelin!"
+          fi
+
+      - name: Tehtävä valmis
+        run: echo "Ajastettu GET-pyyntö suoritettu."
