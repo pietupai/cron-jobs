@@ -18,7 +18,7 @@ jobs:
           echo "$(date) - GET-pyyntö käynnistyy"
           response=$(curl -s -w "%{http_code}" -o response_body.txt https://webhook-x19y.onrender.com/api/poll)
           http_code=$(tail -n1 response_body.txt)
-          response_body=$(head -n -1 response_body.txt)
+          response_body=$(sed '$d' response_body.txt)
           echo "Palvelimen vastaus: $response_body"
           echo "Palvelimen HTTP-vastauskoodi: $http_code"
           if [ "$http_code" -ne 200 ]; then
