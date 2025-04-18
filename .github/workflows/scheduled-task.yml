@@ -2,8 +2,8 @@ name: Scheduled GET Request
 
 on:
   schedule:
-    # Suoritetaan joka 5. minuutti mutta ei tasa-ajoin
-    - cron: "2-59/5 * * * *"
+    # Suoritetaan joka 45. minuutti mutta ei tasa-ajoin
+    - cron: "2-59/45 * * * *"
   workflow_dispatch: # Mahdollistaa manuaalisen käynnistyksen
 
 jobs:
